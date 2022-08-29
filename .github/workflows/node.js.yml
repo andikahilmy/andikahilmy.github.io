@@ -22,14 +22,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - uses: pnpm/action-setup@v2.2.2
+      
+    - name: Install Required Packages
+      run: pnpm i
+    
+    - name: Build and Export Pages
+      run: pnpm run build && pnpm run export
+    
+    - name: Add .nojekyll file
+      run: touch out/.nojekyll
     
     - name: Deploy to GitHub Pages
       # You may pin to the exact commit or the version.
