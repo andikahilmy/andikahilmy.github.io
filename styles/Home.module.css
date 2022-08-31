@@ -10,6 +10,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url('../public/pattern-612x612.jpg');
+  background-repeat: repeat;
 }
 
 .footer {
