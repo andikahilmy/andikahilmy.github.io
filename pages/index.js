@@ -1,6 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Splash from '../components/splash/splash'
+import globals from '../styles/globals.module.css'
+import styles from '../styles/home.module.css'
+
 const bgImage = 'bg.jpg'
 
 export default function Home() {
@@ -13,7 +16,19 @@ export default function Home() {
       </Head>
 
       <Splash bg={bgImage}>
-
+        <div className={`${globals.glass} ${styles.home}`}>
+          <h1>Selamat datang!</h1>
+          <h4>Andika Naufal Hilmy</h4>
+          <h5>a.k.a. dawetmaster</h5>
+          <p>An undergraduate Informatics student who likes and still trying to tinker things about programming.</p>
+          <a href='mailto:andika.naufal48@gmail.com'>Kirimkan aku e-mail!</a>
+          <br/>
+          <a href='https://www.github.com/dawetmaster'>GitHub</a>
+          <br/>
+          <a href='https://www.linkedin.com/in/andikahilmy/'>LinkedIn</a>
+          <br/>
+          <a href='https://www.instagram.com/andhilmy'>Instagram</a>
+        </div>
       </Splash>
       
     </div>
