@@ -1,0 +1,22 @@
+.card {
+    width: calc(100vw - 4rem);
+    /* height: calc(100vh - 4rem); */
+    max-width: 60rem;
+    max-height: 30rem;
+    margin: auto;
+    padding: 2rem 2rem 2rem 2rem;
+}
+
+.greeting {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.name {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}

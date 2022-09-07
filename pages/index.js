@@ -4,6 +4,7 @@ import Splash from '../components/splash/splash'
 import globals from '../styles/globals.module.css'
 import styles from '../styles/home.module.css'
 import githubSvg from '../public/github.svg'
+import Card from '../components/splash/card'
 
 const bgImage = 'bg.jpg'
 
@@ -17,7 +18,17 @@ export default function Home() {
       </Head>
 
       <Splash bg={bgImage}>
-        <div className={`${globals.glass} ${styles.home}`}>
+        <Card/>
+      </Splash>
+      
+    </div>
+  )
+}
+// <p>Photo by <a href="https://unsplash.com/@tricell1991?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Waranont (Joe)</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+
+/*
+
+
           <h1>Selamat datang!</h1>
           <h4>Andika Naufal Hilmy</h4>
           <h5>a.k.a. dawetmaster</h5>
@@ -33,10 +44,5 @@ export default function Home() {
           <br/>
           <br/>
           <a style={{margin: '1rem 0'}} href='https://www.instagram.com/andhilmy'>Instagram</a>
-        </div>
-      </Splash>
-      
-    </div>
-  )
-}
-// <p>Photo by <a href="https://unsplash.com/@tricell1991?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Waranont (Joe)</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+
+*/
