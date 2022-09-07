@@ -6,7 +6,7 @@ import styles from '../styles/home.module.css'
 import githubSvg from '../public/github.svg'
 import Card from '../components/splash/card'
 
-const bgImage = 'bg.jpg'
+const bgImage = 'pattern.svg'
 
 export default function Home() {
   return (
