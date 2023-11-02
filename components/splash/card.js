@@ -2,11 +2,28 @@ import globals from '../../styles/globals.module.css'
 import styles from './card.module.css'
 import { BsGithub, BsInstagram, BsLinkedin } from 'react-icons/bs'
 import { FiMail } from 'react-icons/fi'
+import Image from 'next/image'
 
 function Card(props) {
 	return (
 		<div className={`${globals.glass} ${styles.card}`} style={{display: 'flex', flexDirection: 'column'}}>
-      <div className={styles.greeting}>
+			<div style={{
+				width: '200px',
+				height: '200px',
+				margin: '0 auto',
+			}}>
+				<Image
+					src="https://drive.google.com/uc?export=view&id=16sXg6hrOwLzChIpVC7Gn-6B8VgNbgoK-"
+					alt="photo"
+					width={200}
+					height={200}
+					objectFit='cover'
+					style={{
+						borderRadius: '50%',
+					}}
+					/>
+			</div>
+			<div className={styles.greeting}>
 				Selamat Datang!
 			</div>
 			<div className={styles.name}>
