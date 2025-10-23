@@ -16,21 +16,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: 20
-          cache: yarn
+          bun-version: latest
 
-      - name: Install Yarn dependencies
+      - name: Install dependencies
         run: |
           cd frontend
-          yarn install --frozen-lockfile
+          bun install
 
       - name: Build site
         run: |
           cd frontend
-          yarn build
+          bun run build
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
