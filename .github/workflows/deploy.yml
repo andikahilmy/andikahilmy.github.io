@@ -1,48 +1,44 @@
-# .github/workflows/deploy.yml
 name: Deploy Personal Site to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: [preproduction]
 
-# Allow GitHub Pages deployment
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 20
+          cache: yarn
 
-      - name: Install & Build Vue App
-        working-directory: ./frontend
+      - name: Install Yarn dependencies
         run: |
-          bun install
-          bun run build
+          cd frontend
+          yarn install --frozen-lockfile
 
-      - name: Clean root (remove old files except .git, .github, etc.)
+      - name: Build site
         run: |
-          shopt -s extglob
-          rm -rf !(.git|.github|README.md|LICENSE|CNAME|frontend|node_modules|public|src|vite.config.js|package.json|bun.lock)
+          cd frontend
+          yarn build
 
-      - name: Copy built files to root
-        run: |
-          cp -r ./frontend/dist/* ./
-          # Ensure CNAME is preserved if exists
-          if [ -f ./frontend/public/CNAME ]; then
-            cp ./frontend/public/CNAME ./
-          fi
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
       - name: Deploy to GitHub Pages
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff-index --quiet HEAD || (git commit -m "Deploy site $(date +'%Y-%m-%d %H:%M')" && git push)
+        uses: actions/deploy-pages@v4
